@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/38f0c4ee47.js" crossorigin="anonymous"></script>
+        <title>Assignment 2 - Website Building</title>
+        <style>
+            body {
+                box-sizing: border-box;
+                font-family: sans-serif;
+            }
+            
+
+            #login-container {
+                width: 460px;
+                margin: 0 auto;
+              
+                
+            }
+
+            form label,
+            form input {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            form input {
+                padding: 8px;
+
+            }
+            #username-div{
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-end;
+                align-items: center;
+                position: relative;
+            }
+            #pass-div{
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-end;
+                align-items: center;
+                position: relative;
+            }
+
+            form label {
+                font-weight: bold;
+            }
+
+            form div {
+                margin: 16px 0px;
+               
+            }
+            #check-icon1{
+                position: absolute;
+                color: green;
+                font-size: 24px;
+                bottom: 6px;
+                right: 5px;
+                display: none;
+               
+              
+            }
+            #check-icon2{
+                position: absolute;
+                color: green;
+                font-size: 24px;
+                bottom: 6px;
+                right: 5px;
+                display: none;
+               
+              
+            }
+            #x-icon1{
+                position: absolute;
+                color: red;
+                bottom: 6px;
+                right: 5px;
+                font-size: 24px;
+                display: none;
+                
+            }
+            #x-icon2{
+                position: absolute;
+                color: red;
+                bottom: 6px;
+                right: 5px;
+                font-size: 24px;
+                display: none;
+                
+            }
+            p{  
+                font-size: 24px;
+                display: none;
+            }
+          
+        </style>
+    </head>
+
+    <body>
+
+        <div id="login-container">
+
+            <form id="my-form">
+                <div id="username-div">
+                    <label for="username">Username:</label>
+                    <input id="username" type="text" maxlength="20" >
+                    <i id="check-icon1" class=" fa-solid fa-check"></i>
+                    <i id="x-icon1" class=" fa-solid fa-xmark"></i>
+                   
+                </div>
+
+                <div id="pass-div">
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" maxlength="20" >
+                    <i id="check-icon2" class=" fa-solid fa-check"></i>
+                    <i id="x-icon2" class=" fa-solid fa-xmark"></i>
+                </div>
+
+                <input type="submit" value="Login">
+               <p id="wrong-username">*Please,enter valid username.</p>
+               <p id="empty-username">*Please,enter username.</p>
+               <p id="wrong-pass">*Please,enter valid password.</p>
+               <p id="empty-pass">*Please,enter password.</p>
+               <p id="success"><i>Successuful login!</i></p>
+            </form>
+
+        </div>
+        <script>
+               let myForm = document.getElementById("my-form");
+                myForm.addEventListener("submit" , function(e){
+                    e.preventDefault();
+
+                let username = document.getElementById("username");
+                let password = document.getElementById("password");
+                
+               
+               
+
+                    if(username.value !== "new-user"){
+
+                        let checkIcon1 = document.getElementById("check-icon1");
+                        checkIcon1.style.display = "none";
+
+                        let xIcon1 = document.getElementById("x-icon1");
+                        xIcon1.style.display = "block";
+
+                        let wrongUsername = document.getElementById("wrong-username");
+                        wrongUsername.style.display = "block";
+
+                        username.style.borderColor = "red";
+
+                    
+
+                                                if(username.value !== ""){
+                                                    let empty = document.getElementById("empty-username");
+                                                    empty.style.display = "none";
+                                                }
+                                                else{
+                                                    let empty = document.getElementById("empty-username");
+                                                    empty.style.display = "block";
+                                                    let wrongUsername = document.getElementById("wrong-username");
+                                                    wrongUsername.style.display = "none";
+                                                }
+                    }
+
+                    else {
+                       
+                        let checkIcon1 = document.getElementById("check-icon1");
+                        checkIcon1.style.display = "block";
+                      
+                        let xIcon1 = document.getElementById("x-icon1");
+                        xIcon1.style.display = "none";
+
+                        let wrongUsername = document.getElementById("wrong-username");
+                        wrongUsername.style.display = "none";
+                        
+                        username.style.borderColor = "green";
+
+                        let empty = document.getElementById("empty-username");
+                        empty.style.display = "none";
+                       
+                    }
+            
+                    if(password.value !=="123456789"){
+                        let checkIcon2 = document.getElementById("check-icon2");
+                        checkIcon2.style.display = "none";
+
+                        let xIcon2 = document.getElementById("x-icon2");
+                       xIcon2.style.display = "block";
+
+                       let wrongPass = document.getElementById("wrong-pass");
+                       wrongPass.style.display = "block";
+
+                        password.style.borderColor = "red";
+
+                        
+
+                                                if(password.value !== ""){
+                                                    let emptyPass = document.getElementById("empty-pass");
+                                                    emptyPass.style.display = "none";
+                                                }
+                                                else{
+                                                    let emptyPass = document.getElementById("empty-pass");
+                                                    emptyPass.style.display = "block";
+                                                    let wrongPass = document.getElementById("wrong-pass");
+                                                    wrongPass.style.display = "none";
+                                                }
+                    }
+
+                    else {  
+                        
+                        let checkIcon2 = document.getElementById("check-icon2");
+                        checkIcon2.style.display = "block";
+                     
+                        
+                       let wrongPass = document.getElementById("wrong-pass");
+                       wrongPass.style.display = "none";
+
+                        let xIcon2 = document.getElementById("x-icon2");
+                        xIcon2.style.display = "none";
+                       
+                        
+                        
+                       password.style.borderColor = "green";
+
+                       let emptyPass = document.getElementById("empty-pass");
+                        emptyPass.style.display = "none";
+                    }
+                    
+                        if(username.value !== "new-user" || password.value !== "123456789"){
+                            let success = document.getElementById("success");
+                            success.style.display = "none";
+                        }
+                        else{
+                            let success = document.getElementById("success");
+                            success.style.display = "block";
+                        }
+                    
+                })
+
+
+        </script>
+    </body>
+</html>
